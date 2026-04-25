@@ -26,7 +26,7 @@ class Perceptron:
 
         # first update the weights and bias with a random valuses (0) by dot product with the input samples
         # This basically create a line in a 2d data , plane in 3d data and hyper plane 3d + data
-        linear_output = (self.w @ x_i) + self.b
+        linear_output = (x_i @ self.w) + self.b
 
         # apply a step function or you say activation function
         y_pred = np.sign(linear_output)
