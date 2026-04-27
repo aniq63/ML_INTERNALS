@@ -1,45 +1,33 @@
-# Perceptron
+# Perceptron Implementations from Scratch
 
-The Perceptron is a fundamental algorithm in machine learning, serving as the building block for neural networks. It is a binary classifier that learns a linear decision boundary to separate two classes.
+The Perceptron is the simplest form of a neural network, used for binary classification tasks. This folder contains two variations of the Perceptron algorithm implemented using NumPy.
 
-## Basic Perceptron
+## Implementations
 
-The basic perceptron algorithm iteratively updates weights and bias to correctly classify training examples. It uses a step function as the activation.
+### 1. Simple Perceptron (`simple_perceptron.py`)
+A classic implementation of the Perceptron Learning Rule.
+- **Goal**: Find a linear decision boundary to separate two classes.
+- **Activation**: Step function (Sign function).
+- **Labels**: Converts binary labels to -1 and 1 to simplify the update rule.
+- **Update Rule**: If a point is misclassified ($y_{pred} \neq y_{true}$), weights and bias are updated:
+  - $w = w + \eta \cdot y_{true} \cdot x$
+  - $b = b + \eta \cdot y_{true}$
+- **Dataset**: Tested on synthetic data generated using `make_blobs`.
 
-### Implementation
+### 2. Perceptron with Loss Function (`percepton_with_loss_function.py`)
+A more robust implementation using a margin-based approach (similar to Hinge Loss).
+- **Goal**: Ensure that data points are not just correctly classified, but also satisfy a minimum margin requirement.
+- **Condition**: Updates occur if $y_i \cdot (x_i \cdot w + b) < 1$.
+- **Robustness**: This approach tends to find a better decision boundary by continuing to update even when points are technically on the correct side of the line but too close to it.
+- **Dataset**: Tested on synthetic data generated using `make_blobs` with a higher number of epochs.
 
-The `simple_perceptron.py` file implements the basic perceptron:
+## Key Concepts
+- Linear separability.
+- Feature scaling and label transformation.
+- Impact of learning rate and epochs on convergence.
+- Difference between basic mistake-driven updates and margin-driven loss minimization.
 
-- **Initialization**: Weights and bias are initialized to zero.
-- **Training**: For each epoch, iterate through samples. Compute linear output, apply sign function. If prediction differs from true label, update weights and bias.
-- **Prediction**: Compute linear output and apply sign function.
-
-Key points:
-- Labels are converted to -1 and 1 for consistency.
-- Learning rate controls update step size.
-- Epochs determine training iterations.
-
-## Perceptron with Loss Function
-
-The `percepton_with_loss_function.py` implements a variant of the perceptron that incorporates a margin-based update, similar to hinge loss minimization.
-
-### Implementation
-
-- **Initialization**: Similar to basic perceptron.
-- **Training**: Compute margin = y_i * (x_i @ w + b). If margin < 1, update weights and bias.
-- **Prediction**: Use sign function on linear output, but return 1 or -1 based on >=0.
-
-This variant updates even when the prediction is correct but the margin is small, leading to a more robust decision boundary.
-
-## Testing
-
-Both implementations are tested using scikit-learn's `make_blobs` to generate synthetic binary classification data. The basic perceptron fits and predicts, while the loss function variant also computes accuracy.
-
-## Mathematical Background
-
-The perceptron learns weights w and bias b such that for input x, the prediction is sign(w · x + b).
-
-Update rule for basic perceptron:
-- If y_pred ≠ y_true, then w += lr * y_true * x, b += lr * y_true
-
-For the loss function variant, it's a soft-margin approach updating when margin < 1.
+## How to Run
+1. Ensure dependencies are installed: `pip install numpy scikit-learn`
+2. Run the simple version: `python simple_perceptron.py`
+3. Run the loss-based version: `python percepton_with_loss_function.py`
