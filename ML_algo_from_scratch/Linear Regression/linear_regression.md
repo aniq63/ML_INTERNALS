@@ -2,7 +2,7 @@
 
 This repository contains educational implementations of **Simple Linear Regression** and **Multiple Linear Regression** from scratch using Python and NumPy. It demonstrates how linear models can be trained using the **closed-form solution (Normal Equation)**, without relying on external machine learning libraries for the core logic.
 
-## 📌 Features
+## Features
 
 - **Custom Implementations**:
   - `MyLinearRegression`: For simple linear regression (single feature). Uses the mathematical formulas for slope (m) and intercept (b).
@@ -15,7 +15,7 @@ This repository contains educational implementations of **Simple Linear Regressi
 
 ---
 
-## 🧠 Code Structure
+## Code Structure
 
 ### 1. Simple Linear Regression (`Simple_LinearRegression.py`)
 Implementation for one feature using the formula:
@@ -28,7 +28,7 @@ This implementation automatically handles the intercept by adding a column of on
 
 ---
 
-## 🧪 How to Run
+## How to Run
 
 1. **Install Dependencies**:
    ```bash
@@ -48,7 +48,7 @@ This implementation automatically handles the intercept by adding a column of on
 
 ---
 
-## 📊 Expected Results
+## Expected Results
 
 ### Simple Linear Regression
 - **Feature**: CGPA
@@ -62,7 +62,7 @@ This implementation automatically handles the intercept by adding a column of on
 
 ---
 
-## 📈 Visualization
+## Visualization
 For the 2D case, the code generates a scatter plot of the test data points and overlays the predicted regression line to visualize the fit.
 
 ```python
@@ -73,7 +73,7 @@ plt.show()
 
 ---
 
-## 🔗 References
+## References
 - [NumPy Matrix Multiplication](https://numpy.org/doc/stable/reference/generated/numpy.dot.html)
 - [Normal Equation - Wikipedia](https://en.wikipedia.org/wiki/Linear_least_squares#The_normal_equations)
 - [Scikit-learn Diabetes Dataset](https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset)
