@@ -39,16 +39,20 @@ ML_INTERNALS/
 |       |-- random_forest.py
 |       `-- random_forest.md
 |
-`-- Deep_Learning_from_scratch/
-    |-- Perceptron/
-    |   |-- simple_perceptron.py
-    |   |-- percepton_with_loss_function.py
-    |   `-- perceptron.md
-    |
-    `-- Neural_Network/
-        |-- neural_netwok_numpy.py
-        |-- neural_netwok_pytorch.py
-        `-- neural_netwok.md
+|-- Deep_Learning_from_scratch/
+|   |-- Perceptron/
+|   |   |-- simple_perceptron.py
+|   |   |-- percepton_with_loss_function.py
+|   |   `-- perceptron.md
+|   |
+|   `-- Neural_Network/
+|       |-- neural_netwok_numpy.py
+|       |-- neural_netwok_pytorch.py
+|       `-- neural_netwok.md
+|
+`-- LLM_from_scratch/
+    |-- gpt.py
+    `-- gpt.md
 ```
 
 ---
@@ -169,6 +173,28 @@ Regress  : average output across all trees
 
 ---
 
+## Large Language Models (Transformer)
+
+### GPT From Scratch
+
+| File | Description |
+|------|-------------|
+| `gpt.py` | Decoder-only GPT Transformer trained on Tiny Shakespeare with PyTorch |
+
+**Core concept:** A stack of Transformer decoder blocks, each containing Multi-Head Causal Self-Attention and a Feed-Forward Network. Trained with next-token prediction (cross-entropy loss) using AdamW.
+
+**Key equations:**
+```
+Attention(Q, K, V) = softmax( QKᵀ / √d_k ) · V
+h_t = o_t ⊙ tanh(c_t)
+```
+
+**Achieves:** Validation loss ~1.5, Perplexity ~4.5 (vs random baseline of 65)
+
+**Read more:** [gpt.md](LLM_from_scratch/gpt.md)
+
+---
+
 ## Getting Started
 
 ### Prerequisites
@@ -215,6 +241,7 @@ All scripts use built-in datasets from scikit-learn so there is no manual data d
 | Perceptron | Classification | Hinge Loss / Step | Synthetic Blobs |
 | Neural Network (NumPy) | Regression | MSE, Manual Backprop | Synthetic |
 | Neural Network (PyTorch) | Classification | Binary Cross-Entropy | Titanic |
+| GPT (Transformer) | Language Model | Cross-Entropy, AdamW | Tiny Shakespeare |
 
 ---
 
@@ -262,7 +289,10 @@ This project is open source and available under the [MIT License](LICENSE).
 
 Contributions are welcome. If you would like to add a new algorithm, please follow the existing structure:
 
-1. Create a new folder under `ML_algo_from_scratch/` or `Deep_Learning_from_scratch/`.
+1. Create a new folder under the appropriate section:
+   - `ML_algo_from_scratch/` for classical ML algorithms
+   - `Deep_Learning_from_scratch/` for neural network architectures
+   - `LLM_from_scratch/` for Transformer-based large language models
 2. Add a clean Python implementation with docstrings and comments.
 3. Add a Markdown explanation covering the theory, mathematics, and key concepts.
 4. Update this README.
